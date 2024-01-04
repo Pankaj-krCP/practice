@@ -1,14 +1,11 @@
 const express = require("express");
 const { sequelize } = require("./models");
-const { createUser, getUsers } = require("./controller");
 
 const app = express();
+const routes = require("./routes");
 
 app.use(express.json());
-
-app.post("/createUser", createUser);
-
-app.get("/getUsers", getUsers);
+app.use(routes);
 
 app.listen(3000, async () => {
   console.log("server is running");
